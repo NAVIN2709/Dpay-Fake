@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment UI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #000;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .payment-box {
+            max-width: 400px;
+        }
+
+        .payment-box h2 {
+            font-weight: 300;
+            color: grey;
+        }
+
+        .payment-box h1 {
+            font-size: 50px;
+            margin: 10px 0;
+        }
+
+        .pin-text {
+            color: grey;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .pin-button {
+            background-color: white;
+            color: black;
+            border: none;
+            padding: 15px;
+            width: 100%;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .pin-button:hover {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="payment-box">
+        <h2>Paying <span style="color: white;">Fresh Juice</span></h2>
+        <h1>₹45.00</h1>
+        <p class="pin-text">ENTER YOUR NF-PIN</p>
+        <button class="pin-button">Enter your PIN</button>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        let l = localStorage.getItem("data_entered"); // Retrieve from localStorage
+
+        if (l) {
+          l = JSON.parse(l); // Parse the stored JSON string into an array
+          document.getElementById("shop").textContent = l[1];
+          console.log(l);
+        }
+      });
+      function moveNext(current) {
+        if (current.value.length === current.maxLength) {
+          let next = current.nextElementSibling;
+          if (next) {
+            next.focus();
+          }
+        }}
+        function submit() {
+          window.location.href = "page2.html";
+        }
+    </script>
+</body>
+</html>

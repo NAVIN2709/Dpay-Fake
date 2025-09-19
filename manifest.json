@@ -1,0 +1,21 @@
+{
+    "name": "Dpay Fake",
+    "description": "A fake Dpay wallet to get unlimited food",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "theme_color": "#12111f",
+    "background_color": "#12111f",
+    "icons": [
+      {
+        "src": "dpay.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "dpay.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }
+  

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0,user-scalable=no"
+    />
+    <title>Dpay fake</title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" href="dpay.png" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        height: 100vh;
+        background-color: #12111f;
+      }
+      .header {
+        color: white;
+        font-size: 2rem;
+        margin-bottom: 20px;
+        padding: 20px;
+      }
+      .container {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        row-gap: 10px;
+      }
+      input {
+        padding: 10px;
+        width: 100%;
+      }
+      input::placeholder {
+        font-size: 1rem;
+      }
+      input:focus {
+        border: 2px solid red;
+        outline: none;
+      }
+      .btn {
+        margin-top: 50px;
+        background: #333;
+        color: white;
+        border: none;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        border-radius: 5px;
+        font-size: 1.7rem;
+        width: 200px;
+        margin: auto;
+        border-radius: 15px;
+      }
+      .href {
+        color: white;
+        text-decoration: none;
+      }
+      select {
+        padding: 10px;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <p class="header">Enter Details to generate fake payment page</p>
+      <input type="text" id="amount" name="amount" placeholder="Enter Amount" />
+      <select id="shop" name="shop-name">
+        <option value="Rolls On Wheels">Rolls On Wheels</option>
+        <option value="GB Foods">GB Foods</option>
+        <option value="Bhai Briyani">Bhai Briyani</option>
+        <option value="Little Town Waffles">Little Town Waffles</option>
+        <option value="It's Softie Time">It's Softie Time</option>
+        <option value="Fries With Benefits">Fries With Benefits</option>
+        <option value="Korean Street">Korean Street</option>
+        <option value="Fusilli Reasons">Fusilli Reasons</option>
+        <option value="Hotel Hari">Hotel Hari</option>
+        <option value="Punjabi Dhaba">Punjabi Dhaba</option>
+        <option value="Munchies">Munchies</option>
+        <option value="2K Foodies Hut">2K Foodies Hut</option>
+        <option value="Kozhi 65">Kozhi 65</option>
+        <option value="Heylo Berries">Heylo Berries</option>
+        <option value="Soyo Momos">Soyo Momos</option>
+        <option value="Milkshakes.Co">Milkshakes.Co</option>
+      </select>
+      <input type="time" id="time" name="time" />
+      <select id="format" name="format">
+        <option value="AM">AM</option>
+        <option value="PM">PM</option>
+      </select>
+      <select id="month" name="month">
+        <option value="Feb">Feb</option>
+        <option value="Mar">Mar</option>
+        <option value="Sep">Sep</option>
+      </select>
+      <input type="date" id="date" placeholder="Enter Date" />
+      <button onclick="submit()" class="btn">Generate</button>
+    </div>
+    <script>
+      function submit() {
+        const amount = document.getElementById("amount").value;
+        const shop = document.getElementById("shop").value;
+        const time = document.getElementById("time").value;
+        const date = document.getElementById("date").value;
+        const format = document.getElementById("format").value; // Format AM OR PM
+        const month = document.getElementById("month").value;
+
+        let l = [amount, shop, time, date, format, month]; // Store as an array
+        localStorage.setItem("data_entered", JSON.stringify(l)); // Store as JSON
+
+        window.location.href = "page3.html"; // Navigate after storing
+      }
+    </script>
+  </body>
+</html>

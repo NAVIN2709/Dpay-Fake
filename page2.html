@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0,user-scalable=no"
+    />
+    <title>Payment Successful</title>
+    <link rel="icon" href="dpay.png">
+    <style>
+      body {
+        background-color: #12111f;
+        color: white;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .container {
+        background: #12111f;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+      h2 {
+        color: #6cff99;
+        margin: 10px 0;
+      }
+      .amount {
+        font-size: 3.7rem;
+        font-weight: 700;
+        color: #62fdc2;
+        padding-top: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .payee {
+        font-size: 2.6rem;
+        font-weight: bold;
+        margin-top: -20px;
+      }
+      .ref-id {
+        font-size: 1.5rem;
+        color: white;
+        word-break: break-all;
+        width: 200px;
+        margin: auto;
+        margin-top: -13px;
+      }
+      .back-btn {
+        background: #333;
+        color: white;
+        border: none;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        border-radius: 5px;
+        font-size: 1.7rem;
+        width: 200px;
+        margin: auto;
+        border-radius: 15px;
+        position: relative;
+        
+      }
+      .button{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
+      .success {
+        font-size: 2.1rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+        margin-top: 5%;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      .video {
+        height: max-content;
+        position: relative;
+        width: 95%;
+      }
+      .paid {
+        color: #9d9eaa;
+        font-size: 1.4rem;
+        margin-top: 10px;
+      }
+      .ref {
+        color: #9d9eaa;
+        font-size: 1.4rem;
+        margin-top: 20px;
+      }
+      .href {
+        color: white;
+        text-decoration: none;
+      }
+      .datetime {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        color: #98e3c6;
+        font-size: 1.5rem;
+        margin-top: 30px;
+        column-gap: 15px;
+      }
+      .page{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        height:100%;
+        background-color: #12111f;
+      }
+    </style>
+  </head>
+  <body>
+    <video src="dpai-new.mp4" autoplay muted loop class="video"></video>
+    <div class="page">
+      <div class="container">
+        <h3 class="success">Payment Successful</h3>
+        <div class="amount" id="amount"></div>
+        <p class="paid">Paid To:</p>
+        <div class="payee" id="payee"></div>
+        <div class="datetime">
+          <div class="time" id="time"></div>
+          <div class="date" id="date"></div>
+        </div>
+        <div class="payment">
+          <p class="ref">Payment Ref Id:</p>
+          <p class="ref-id">665fea51-9c41-4b52-bea4-...</p>
+        </div>
+      </div>
+      <div class="button">
+        <button class="back-btn">
+          <a href="page3.html" class="href">Back</a>
+        </button>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        let l = localStorage.getItem("data_entered"); // Retrieve from localStorage
+
+        if (l) {
+          l = JSON.parse(l); // Parse the stored JSON string into an array
+          console.log(l); // Debugging: Check what is stored in localStorage
+
+          document.getElementById("amount").textContent ='₹'+l[0];
+          document.getElementById("payee").textContent = l[1];
+          document.getElementById("time").textContent = l[2]+' '+l[4];
+          document.getElementById("date").textContent = l[5]+' '+l[3].slice(-2)+', '+l[3].slice(0,4);
+          console.log(l[3]);
+        } else {
+          console.error("No data found in localStorage!");
+        }
+      });
+    </script>
+  </body>
+</html>
