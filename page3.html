@@ -1,91 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment UI</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-        
-        body {
-            background-color: #000;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            text-align: center;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>D-Pay UI</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
 
-        .payment-box {
-            max-width: 400px;
-        }
+    body {
+      background: #06070a;
+      display: flex;
+      flex-direction: column;
+      justify-content:space-between;
+      align-items: center;
+      height: 100vh;
+      color: #fff;
+      padding: 40px;
+    }
 
-        .payment-box h2 {
-            font-weight: 300;
-            color: grey;
-        }
+    .title {
+      font-size: 2rem;
+      color: grey;
+      margin-bottom: 10px;
+      text-align: center;
+    }
 
-        .payment-box h1 {
-            font-size: 50px;
-            margin: 10px 0;
-        }
+    .shop {
+      display: inline-block;
+      padding: 8px 16px;
+      background: #0a0c1b;
+      border-radius: 12px;
+      font-size: 2rem;
+      margin-bottom: 30px;
+      color:#888a8d;
+    }
 
-        .pin-text {
-            color: grey;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-        }
+    .pin-box {
+      background: #0f0e1f;
+      padding: 25px 20px;
+      border-radius: 12px;
+      width: 300px;
+      margin: 0 auto;
+      position: relative;
+      text-align: center;
+    }
 
-        .pin-button {
-            background-color: white;
-            color: black;
-            border: none;
-            padding: 15px;
-            width: 100%;
-            font-size: 18px;
-            border-radius: 8px;
-            cursor: pointer;
-        }
+    .close-btn {
+      position: absolute;
+      right: 12px;
+      top: 12px;
+      background: #8df9c9;
+      color: #000;
+      border: none;
+      font-size: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      width: 28px;
+      height: 28px;
+      line-height: 28px;
+      text-align: center;
+    }
 
-        .pin-button:hover {
-            background-color: #ccc;
-        }
-    </style>
+    .pin-text {
+      font-size: 14px;
+      color: #000000;
+      margin-bottom: 15px;
+    }
+
+    .pin-inputs {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .pin-inputs input {
+      width: 50px;
+      height: 55px;
+      font-size: 26px;
+      text-align: center;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      background: #fff;
+    }
+
+    .pay-btn {
+      width: 50%;
+      padding: 10px;
+      background: #83d098;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      color:black;
+    }
+
+    .pay-btn:hover {
+      background: #2bb159;
+    }
+
+    .warning {
+      margin-top: -20px;
+      padding: 10px;
+      background: #21130c;
+      color: #87815d;
+      border-radius: 6px;
+      font-size: 23px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .pay-now-btn {
+      margin-top: 25px;
+      width: 60%;
+      padding: 14px;
+      background: #235933;
+      border: none;
+      border-radius: 15px;
+      font-size: 23px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #8b8a89;
+    }
+
+    .pay-now-btn:hover {
+      background: #00773f;
+    }
+  </style>
 </head>
 <body>
-    <div class="payment-box">
-        <h2>Paying <span style="color: white;">Fresh Juice</span></h2>
-        <h1>₹45.00</h1>
-        <p class="pin-text">ENTER YOUR NF-PIN</p>
-        <button class="pin-button">Enter your PIN</button>
-    </div>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        let l = localStorage.getItem("data_entered"); // Retrieve from localStorage
+  <div>
+    <p class="title">Paying</p>
+  <div id="shop" class="shop">Loading...</div>
+  </div>
 
-        if (l) {
-          l = JSON.parse(l); // Parse the stored JSON string into an array
-          document.getElementById("shop").textContent = l[1];
-          console.log(l);
-        }
-      });
-      function moveNext(current) {
-        if (current.value.length === current.maxLength) {
-          let next = current.nextElementSibling;
-          if (next) {
-            next.focus();
-          }
-        }}
-        function submit() {
-          window.location.href = "page2.html";
-        }
-    </script>
+  <div>
+    <div class="pin-box">
+    <button class="close-btn">&times;</button>
+    <p class="pin-text">Enter your D-Pay pin</p>
+
+    <div class="pin-inputs">
+      <input type="password" maxlength="1" oninput="moveNext(this)">
+      <input type="password" maxlength="1" oninput="moveNext(this)">
+      <input type="password" maxlength="1" oninput="moveNext(this)">
+      <input type="password" maxlength="1" oninput="moveNext(this)">
+    </div>
+
+    <button class="pay-btn" onclick="submitPin()">PAY</button>
+  </div>
+
+  <div class="warning">⚠ Pay near the stall</div>
+  </div>
+
+  <button class="pay-now-btn">Pay Now</button>
+
+  <script>
+    // Load shop name from localStorage
+    document.addEventListener("DOMContentLoaded", function () {
+      let l = localStorage.getItem("data_entered");
+      if (l) {
+        l = JSON.parse(l);
+        document.getElementById("shop").textContent = l[1]; // shop name
+      }
+    });
+
+    function moveNext(current) {
+      if (current.value.length === current.maxLength) {
+        let next = current.nextElementSibling;
+        if (next) next.focus();
+      }
+    }
+
+    function submitPin() {
+      let inputs = document.querySelectorAll(".pin-inputs input");
+      let pin = "";
+      inputs.forEach(i => pin += i.value);
+
+      if (pin.length === 4) {
+        window.location.href = "page2.html";
+      } else {
+        alert("Please enter 4 digits!");
+      }
+    }
+  </script>
 </body>
 </html>
